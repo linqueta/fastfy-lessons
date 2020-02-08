@@ -1,7 +1,5 @@
-module.exports = function (fastify, options, done) {
-  fastify.get('/plugin', (request, reply) => {
-    reply.send({ hello: 'world' })
+module.exports = async function (fastify, options) {
+  fastify.get('/plugin', async (request, reply) => {
+    return { hello: 'world, big world' }
   })
-
-  done()
 }
