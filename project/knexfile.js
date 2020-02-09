@@ -6,6 +6,12 @@ module.exports = {
     client: 'sqlite3',
     connection: {
       filename: './dev.sqlite3'
+    },
+    migrations: {
+      directory: __dirname + '/db/migrations',
+    },
+    seeds: {
+      directory: __dirname + '/db/seeds'
     }
   },
 
@@ -13,7 +19,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'my_db',
-      user:     'username',
+      user: 'username',
       password: 'password'
     },
     pool: {
@@ -21,7 +27,8 @@ module.exports = {
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations'
+      tableName: 'knex_migrations',
+      directory: __dirname + '/db/migrations'
     }
   },
 
@@ -29,7 +36,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'my_db',
-      user:     'username',
+      user: 'username',
       password: 'password'
     },
     pool: {
@@ -37,7 +44,8 @@ module.exports = {
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations'
+      tableName: 'knex_migrations',
+      directory: __dirname + '/db/migrations'
     }
   }
 
