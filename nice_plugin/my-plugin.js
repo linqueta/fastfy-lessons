@@ -27,4 +27,18 @@ module.exports = async function (fastify, options) {
   fastify.get('/happiness', (request, reply) => {
     reply.send({ happy: request.isHappy })
   })
+
+  fastify.decorate('util2', (request, key, value) => { request[key] = value })
+
+  fastify.addHook('preHandler', async (request, reply) => {
+    fastify.util2(request, 'timestamp', new Date())
+  })
+
+  fastify.get('/plugin1', (request, reply) => {
+    reply.send({ date: request.timestamp })
+  })
+
+  fastify.get('/plugin2', (request, reply) => {
+    reply.send(request)
+  })
 }
