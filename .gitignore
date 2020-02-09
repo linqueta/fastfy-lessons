@@ -1,3 +1,4 @@
 quick_start/node_modules
 validation_hooks/node_modules
 nice_plugin/node_modules
+*.sqlite3
