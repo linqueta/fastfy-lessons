@@ -13,4 +13,18 @@ module.exports = async function (fastify, options) {
   fastify.get('/html', (request, reply) => {
     reply.html('oioioi')
   })
+
+  fastify.decorateRequest('setHeader', function (header) {
+    this.isHappy = this.headers[header]
+  })
+
+  fastify.decorateRequest('isHappy', false) // This will be added to the Request object prototype, yay speed!
+
+  fastify.addHook('preHandler', async (request, reply) => {
+    request.setHeader('happy')
+  })
+
+  fastify.get('/happiness', (request, reply) => {
+    reply.send({ happy: request.isHappy })
+  })
 }
